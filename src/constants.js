@@ -19,14 +19,15 @@ export const FONT_SIZES = {
   SMALL: 10,
   EXTRA_SMALL: 8,
 };
-
 //fonts
 export const FONTS = {
-  LIGHT: "PlusJakartaSans-Light",
-  REGULAR: "PlusJakartaSans-Regular",
-  MEDIUM: "PlusJakartaSans-Medium",
+  // MAIN: {
+  // },
+  LIGHT: "PlusJakartaSans-300",
+  REGULAR: "PlusJakartaSans-400",
+  MEDIUM: "PlusJakartaSans-500",
+  // LOGO: "RobotoCondensed-700",
 };
-
 //spaces
 export const SPACES = {
   SPACE_1: 4,

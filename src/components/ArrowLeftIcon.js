@@ -1,6 +1,6 @@
 import React from "react";
 import Svg, { Path } from "react-native-svg";
-export const AddIcon = (props) => (
+export const ArrowLeftIcon = (props) => (
   <Svg
     width={props.size}
     height={props.size}
@@ -10,19 +10,13 @@ export const AddIcon = (props) => (
     {...props}
   >
     <Path
-      d="M8 16H24"
+      d="M20 26.5599L11.3066 17.8666C10.28 16.8399 10.28 15.1599 11.3066 14.1333L20 5.43994"
       stroke={props.color}
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-    <Path
-      d="M16 24V8"
-      stroke={props.color}
-      stroke-width="4"
+      strokeWidth={props.strokeWidth}
+      stroke-miterlimit="10"
       stroke-linecap="round"
       stroke-linejoin="round"
     />
   </Svg>
 );
-export default AddIcon;
+export default ArrowLeftIcon;

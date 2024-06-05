@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 import { COLORS, FONTS, FONT_SIZES, SPACES } from "./constants";
 
 const baseButtonStyle = {
+  width: "100%",
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "center",
@@ -10,7 +11,7 @@ const baseButtonStyle = {
 };
 
 const baseButtonTextStyle = {
-  fontFamily: FONTS.MEDIUM,
+  // fontFamily: FONTS.MAIN.MEDIUM,
   marginLeft: SPACES.SPACE_1_5,
 };
 
@@ -47,15 +48,15 @@ export const commonStyles = StyleSheet.create({
     color: COLORS.WHITE,
   },
   IconLg: {
+    width: 28,
+    height: 28,
+  },
+  IconMd: {
     width: 24,
     height: 24,
   },
-  IconMd: {
+  IconSm: {
     width: 16,
     height: 16,
-  },
-  IconSm: {
-    width: 10,
-    height: 10,
   },
 });

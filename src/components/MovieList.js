@@ -9,8 +9,8 @@ export const MovieList = ({}) => {
       style={{
         backgroundColor: COLORS.GRAY,
         borderRadius: 5,
-        paddingVertical: 16,
-        paddingHorizontal: 16,
+        paddingVertical: SPACES.SPACE_4,
+        paddingHorizontal: SPACES.SPACE_4,
         flexDirection: "row",
         width: "100%",
       }}
@@ -27,7 +27,7 @@ export const MovieList = ({}) => {
         <Text
           style={{
             color: COLORS.WHITE,
-            fontFamily: FONTS.MEDIUM,
+            // fontFamily: FONTS.,
             fontSize: FONT_SIZES.LARGE * 1.25,
             marginBottom: SPACES.SPACE_1_5,
           }}
@@ -37,15 +37,17 @@ export const MovieList = ({}) => {
         <Text
           style={{
             color: COLORS.WHITE,
-            fontFamily: FONTS.LIGHT,
+            // fontFamily: FONTS.MAIN.LIGHT,
             fontSize: FONT_SIZES.MEDIUM * 1.25,
             marginBottom: SPACES.SPACE_8,
           }}
         >
           2024-04-30
         </Text>
-        <Button title={"More"} size={"Sm"} color={"White"} />
+        <Button title={"More"} size={"Sm"} color={"White"} strokeWidth={2} />
       </View>
     </View>
   );
 };
+
+export default MovieList;
