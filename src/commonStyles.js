@@ -6,12 +6,13 @@ const baseButtonStyle = {
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "center",
+  flex: 0,
   paddingHorizontal: SPACES.SPACE_4,
   borderRadius: 5,
 };
 
 const baseButtonTextStyle = {
-  // fontFamily: FONTS.MAIN.MEDIUM,
+  fontFamily: FONTS.MEDIUM,
   marginLeft: SPACES.SPACE_1_5,
 };
 
@@ -19,12 +20,11 @@ export const commonStyles = StyleSheet.create({
   //Button style - Size
   ButtonLg: {
     ...baseButtonStyle,
-    paddingVertical: SPACES.SPACE_2_5,
-    marginBottom: 12, // test용
+    paddingVertical: SPACES.SPACE_2,
   },
   ButtonLgText: {
     ...baseButtonTextStyle,
-    fontSize: FONT_SIZES.MEDIUM * 1.25,
+    fontSize: FONT_SIZES.MEDIUM * 1.15,
   },
   ButtonSm: {
     ...baseButtonStyle,

@@ -12,14 +12,14 @@ export const AddIcon = (props) => (
     <Path
       d="M8 16H24"
       stroke={props.color}
-      stroke-width="4"
+      strokeWidth={props.strokeWidth}
       stroke-linecap="round"
       stroke-linejoin="round"
     />
     <Path
       d="M16 24V8"
       stroke={props.color}
-      stroke-width="4"
+      strokeWidth={props.strokeWidth}
       stroke-linecap="round"
       stroke-linejoin="round"
     />

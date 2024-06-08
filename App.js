@@ -13,6 +13,14 @@ import {
   PlusJakartaSans_500Medium,
 } from "@expo-google-fonts/plus-jakarta-sans";
 import { RobotoCondensed_700Bold } from "@expo-google-fonts/roboto-condensed";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen from "./src/screens/HomeScreen";
+import NotificationScreen from "./src/screens/NotificationScreen";
+import SavedListScreen from "./src/screens/SavedListScreen";
+import DetailScreen from "./src/screens/DetailScreen";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -27,22 +35,34 @@ export default function App() {
   }
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
-        <Header />
-        <View style={{ marginVertical: SPACES.SPACE_8 }}>
-          <Text
-            style={{
-              fontFamily: FONTS.MEDIUM,
-              color: COLORS.WHITE,
-              fontSize: FONT_SIZES.EXTRA_LARGE * 1.25,
-            }}
-          >
-            Upcoming Movies{" "}
-          </Text>
-        </View>
-        <MovieList />
-        {/* <List /> */}
-      </SafeAreaView>
+      <NavigationContainer>
+        <SafeAreaView style={styles.container}>
+          <StatusBar style="light" backgroundColor={COLORS.WHITE} />
+          <Header />
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen
+              name="Home"
+              component={HomeScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Detail"
+              component={DetailScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Notification"
+              component={NotificationScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="SavedList"
+              component={SavedListScreen}
+              options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
+        </SafeAreaView>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
@@ -50,7 +70,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: SPACES.SPACE_6,
     backgroundColor: COLORS.BLACK,
   },
 });

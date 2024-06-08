@@ -18,7 +18,7 @@ export const Button = ({ title, size, color, icon, strokeWidth, onPress }) => {
 
   let iconSize = size === "Lg" ? 24 : 18;
   return (
-    <TouchableOpacity style={buttonStyle}>
+    <TouchableOpacity style={buttonStyle} onPress={onPress}>
       <IconComponent
         icon={icon}
         color={iconColor}

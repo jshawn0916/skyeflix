@@ -1,10 +1,15 @@
 import React from "react";
-import AddIcon from "./AddIcon";
-import TrashIcon from "./TrashIcon";
+import AddIcon from "./Icons/AddIcon";
+import TrashIcon from "./Icons/TrashIcon";
 import { View } from "react-native";
-import ArrowLeftIcon from "./ArrowLeftIcon";
-import DirectNomalIcon from "./DirectNormalIcon";
-import NotificationIcon from "./NotificationIcon";
+import ArrowLeftIcon from "./Icons/ArrowLeftIcon";
+import DirectNomalIcon from "./Icons/DirectNormalIcon";
+import NotificationIcon from "./Icons/NotificationIcon";
+import LocationIcon from "./Icons/LocationIcon";
+import StarIcon from "./Icons/StarIcon";
+import CalendarAddIcon from "./Icons/CalendarAddIcon";
+import PlayIcon from "./Icons/PlayIcon";
+import NotificationBingIcon from "./Icons/NotificationBingIcon";
 
 export const IconComponent = ({ icon, color, iconSize, strokeWidth }) => {
   let Icon;
@@ -23,6 +28,21 @@ export const IconComponent = ({ icon, color, iconSize, strokeWidth }) => {
       break;
     case "Notification":
       Icon = NotificationIcon;
+      break;
+    case "Location":
+      Icon = LocationIcon;
+      break;
+    case "Star":
+      Icon = StarIcon;
+      break;
+    case "CalendarAdd":
+      Icon = CalendarAddIcon;
+      break;
+    case "Play":
+      Icon = PlayIcon;
+      break;
+    case "NotificationBing":
+      Icon = NotificationBingIcon;
       break;
     // 필요한 경우 다른 아이콘 컴포넌트를 추가합니다.
     default:
