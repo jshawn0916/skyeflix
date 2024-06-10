@@ -3,7 +3,7 @@ import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
 import { COLORS, FONTS, FONT_SIZES, SPACES } from "./src/constants";
-import List from "./src/components/List";
+
 import MovieList from "./src/components/MovieList";
 import Header from "./src/components/Header";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";

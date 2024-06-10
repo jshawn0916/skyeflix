@@ -4,15 +4,22 @@ import Button from "../components/Button";
 import { useMovieDetail, useGetCredit } from "../hook/useDetail";
 import { COLORS, FONTS, FONT_SIZES, SPACES } from "../constants";
 import IconComponent from "../components/IconComponent";
+import IconButton from "../components/IconButton";
 import CastList from "../components/CastList";
 import Detail from "../components/Detail";
 import Margin from "../components/Margin";
+import {
+  storeFavoriteMovie,
+  removeFavoriteMovie,
+  getFavoriteMovies,
+} from "../utils/storage";
 
-const DetailScreen = ({ navigation, route }) => {
+const DetailScreen = ({ navigation, route, isFavorite }) => {
   const { movieId } = route.params;
   const movieDetail = useMovieDetail(movieId);
   const castDetail = useGetCredit(movieId);
   const crewDetail = useGetCredit(movieId);
+  const [clicked, setClicked] = useState(isFavorite);
 
   const genreText = movieDetail.genre
     ? movieDetail.genre
@@ -20,6 +27,7 @@ const DetailScreen = ({ navigation, route }) => {
         .map((genre) => genre.name)
         .join(", ")
     : "";
+  //render cast Flat list
   const renderCast = ({ item }) => (
     <CastList
       character={item.character}
@@ -27,9 +35,11 @@ const DetailScreen = ({ navigation, route }) => {
       profileImg={item.profile}
     />
   );
+  //render crew Flat list
   const renderCrew = ({ item }) => (
     <CastList character={item.job} name={item.name} profileImg={item.profile} />
   );
+  // FlatList 컴포넌트 분리
   const SeparatorComponent = () => (
     <View
       style={{
@@ -39,6 +49,28 @@ const DetailScreen = ({ navigation, route }) => {
     />
   );
 
+  useEffect(() => {
+    const loadFavorites = async () => {
+      const favorites = await getFavoriteMovies();
+      setClicked(favorites.some((movie) => movie.movieId === movieId));
+    };
+    loadFavorites();
+  }, [movieId]);
+
+  const clickFavorite = async () => {
+    const movie = {
+      movieId: movieId,
+      title: movieDetail.title,
+      releaseDate: movieDetail.releaseDate,
+      posterImg: movieDetail.uri,
+    };
+    if (clicked) {
+      await removeFavoriteMovie(movieId);
+    } else {
+      await storeFavoriteMovie(movie);
+    }
+    setClicked(!clicked);
+  };
   return (
     <ScrollView style={{ flex: 1 }} bounces={false}>
       <View
@@ -94,11 +126,13 @@ const DetailScreen = ({ navigation, route }) => {
             </View>
           </View>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <IconComponent
-              color={COLORS.WHITE}
+            <IconButton
+              color={clicked ? COLORS.RED_POINT : COLORS.WHITE}
+              fill={clicked ? COLORS.RED_POINT : "none"}
               icon={"Star"}
               iconSize={24}
               strokeWidth={2.5}
+              onPress={clickFavorite}
             />
           </View>
         </View>

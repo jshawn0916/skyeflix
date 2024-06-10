@@ -79,6 +79,7 @@ const HomeScreen = ({ navigation }) => {
             icon={"Location"}
             iconSize={16}
             strokeWidth={2.5}
+            fill={"none"}
           />
           <Text
             style={{

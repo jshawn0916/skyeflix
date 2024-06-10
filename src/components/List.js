@@ -1,9 +1,17 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import IconButton from "./IconButton";
 import { COLORS, FONTS, FONT_SIZES, SPACES } from "../constants";
 
-export const List = ({}) => {
+export const List = ({
+  type,
+  title,
+  releaseDate,
+  posterImg,
+  movieId,
+  onDelete,
+  navigation,
+}) => {
   return (
     <View
       style={{
@@ -18,26 +26,31 @@ export const List = ({}) => {
       }}
     >
       <View style={{ flexDirection: "row", alignItems: "center" }}>
-        {/* <View
-          style={{
-            width: 64,
-            height: 82,
-            backgroundColor: COLORS.GRAY_LIGHT,
-            borderRadius: 5,
-            marginRight: SPACES.SPACE_4,
-          }}
-        /> */}
-        <View>
-          <Text
+        {type === "favorite" && (
+          <Image
+            source={{ uri: "https://image.tmdb.org/t/p/w500" + posterImg }}
             style={{
-              color: COLORS.WHITE,
-              fontFamily: FONTS.MEDIUM,
-              fontSize: FONT_SIZES.LARGE * 1.25,
-              marginBottom: SPACES.SPACE_2,
+              width: 64,
+              height: 82,
+              borderRadius: 5,
+              marginRight: SPACES.SPACE_4,
             }}
-          >
-            The Garfield Movie
-          </Text>
+          />
+        )}
+        <View>
+          <TouchableOpacity>
+            <Text
+              onPress={() => navigation.navigate("Detail", { movieId })}
+              style={{
+                color: COLORS.WHITE,
+                fontFamily: FONTS.MEDIUM,
+                fontSize: FONT_SIZES.LARGE * 1.25,
+                marginBottom: SPACES.SPACE_2,
+              }}
+            >
+              {title}
+            </Text>
+          </TouchableOpacity>
           <Text
             style={{
               color: COLORS.WHITE,
@@ -45,7 +58,7 @@ export const List = ({}) => {
               fontSize: FONT_SIZES.MEDIUM * 1.25,
             }}
           >
-            2024-04-30
+            {releaseDate}
           </Text>
         </View>
       </View>
@@ -55,6 +68,8 @@ export const List = ({}) => {
         size={"Lg"}
         icon={"Trash"}
         strokeWidth={1.5}
+        fill={"none"}
+        onPress={onDelete}
       />
     </View>
   );

@@ -11,7 +11,7 @@ import CalendarAddIcon from "./Icons/CalendarAddIcon";
 import PlayIcon from "./Icons/PlayIcon";
 import NotificationBingIcon from "./Icons/NotificationBingIcon";
 
-export const IconComponent = ({ icon, color, iconSize, strokeWidth }) => {
+export const IconComponent = ({ icon, color, iconSize, strokeWidth, fill }) => {
   let Icon;
   switch (icon) {
     case "Add":
@@ -50,7 +50,12 @@ export const IconComponent = ({ icon, color, iconSize, strokeWidth }) => {
   }
   return (
     <View>
-      <Icon strokeWidth={strokeWidth} color={color} size={iconSize} />
+      <Icon
+        strokeWidth={strokeWidth}
+        color={color}
+        size={iconSize}
+        fill={fill}
+      />
     </View>
   );
 };
