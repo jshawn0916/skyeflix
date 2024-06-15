@@ -41,10 +41,17 @@ export const commonStyles = StyleSheet.create({
   ButtonBlack: {
     backgroundColor: COLORS.GRAY_DARK,
   },
+  ButtonDisabled: {
+    backgroundColor: COLORS.GRAY_DARK,
+    opacity: 0.5,
+  },
   ButtonWhiteText: {
     color: COLORS.BLACK,
   },
   ButtonBlackText: {
+    color: COLORS.WHITE,
+  },
+  ButtonDisabledText: {
     color: COLORS.WHITE,
   },
   IconLg: {

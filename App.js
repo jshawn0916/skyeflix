@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
+import * as Expo from "expo";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
+import { StyleSheet, ActivityIndicator, Alert, Linking } from "react-native";
 import { COLORS, FONTS, FONT_SIZES, SPACES } from "./src/constants";
-
-import MovieList from "./src/components/MovieList";
 import Header from "./src/components/Header";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import {
@@ -15,14 +14,59 @@ import {
 import { RobotoCondensed_700Bold } from "@expo-google-fonts/roboto-condensed";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import * as Notifications from "expo-notifications";
+import * as Permissions from "expo-permissions";
+import * as Calendar from "expo-calendar";
 import HomeScreen from "./src/screens/HomeScreen";
 import NotificationScreen from "./src/screens/NotificationScreen";
 import SavedListScreen from "./src/screens/SavedListScreen";
 import DetailScreen from "./src/screens/DetailScreen";
+import {
+  requestNotificationPermission,
+  scheduleNotification,
+} from "./src/utils/notification";
+import { requestCalendarPermission } from "./src/utils/calendar";
 
 const Stack = createNativeStackNavigator();
 
+requestNotificationPermission(); // 푸시 알림 권한 요청 함수
+const openNotificationSettings = () => {
+  Linking.openSettings();
+};
 export default function App() {
+  useEffect(() => {
+    const setupNotifications = async () => {
+      try {
+        const permissionGranted = await requestNotificationPermission();
+        if (!permissionGranted) {
+          Alert.alert(
+            "알림 권한 필요",
+            "알림 권한을 허용해야 알림을 받을 수 있습니다.",
+            [
+              { text: "취소", onPress: () => console.log("취소 Pressed") },
+              { text: "설정", onPress: openNotificationSettings },
+            ],
+            { cancelable: false }
+          );
+        }
+      } catch (error) {
+        console.error("알림 권한 설정 에러:", error);
+      }
+    };
+
+    setupNotifications();
+  }, []);
+
+  Notifications.setNotificationHandler({
+    //push 핸들러 처리함수
+    handleNotification: async () => ({
+      //알림이 도착했을 때 호출되는 비동기 함수
+      shouldShowAlert: true,
+      shouldPlaySound: false,
+      shouldSetBadge: false,
+    }),
+  }); //푸시 알림에대한 설정
+
   const [fontsLoaded] = useFonts({
     [FONTS.LIGHT]: PlusJakartaSans_300Light,
     [FONTS.REGULAR]: PlusJakartaSans_400Regular,

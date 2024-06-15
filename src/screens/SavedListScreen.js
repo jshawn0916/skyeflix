@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Button, FlatList, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  Button,
+  FlatList,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { COLORS, FONTS, FONT_SIZES, SPACES } from "../constants";
 import List from "../components/List";
 import {
@@ -20,16 +27,49 @@ const SavedListScreen = ({ navigation }) => {
   }, []);
 
   const deleteFavorite = async (movieId) => {
-    await removeFavoriteMovie(movieId); // 저장된 목록에서 삭제
-    const updatedFavorites = favorites.filter(
-      (movie) => movie.movieId !== movieId
-    ); // 상태 업데이트
-    setFavorites(updatedFavorites);
+    Alert.alert(
+      "Clear Notification",
+      "Are you sure you want to delete this notification?",
+      [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Delete",
+          onPress: async () => {
+            try {
+              await removeFavoriteMovie(movieId); // 저장된 목록에서 삭제
+              const updatedFavorites = favorites.filter(
+                (movie) => movie.movieId !== movieId
+              ); // 상태 업데이트
+              setFavorites(updatedFavorites);
+            } catch (error) {
+              console.error("Error deleting notification:", error);
+            }
+          },
+        },
+      ]
+    );
   };
 
   const allClearFavorites = async () => {
-    await clearAllFavorites();
-    setFavorites([]);
+    Alert.alert(
+      "Clear All Favorite Movies",
+      "Are you sure you want to delete all Favorite Movie Lists?",
+      [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Delete",
+          onPress: async () => {
+            try {
+              // 모든 목록 삭제 요청 처리
+              await clearAllFavorites();
+              setFavorites([]);
+            } catch (error) {
+              console.error("Error clearing notifications:", error);
+            }
+          },
+        },
+      ]
+    );
   };
 
   const SeparatorComponent = () => (
@@ -94,12 +134,27 @@ const SavedListScreen = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
       </View>
-      <FlatList
-        data={favorites}
-        renderItem={renderList}
-        ItemSeparatorComponent={SeparatorComponent}
-        keyExtractor={(item) => item.movieId.toString()}
-      />
+      {favorites.length === 0 ? (
+        <View style={{ flex: 1, justifyContent: "center" }}>
+          <Text
+            style={{
+              color: COLORS.GRAY_LIGHT,
+              fontFamily: FONTS.MEDIUM,
+              fontSize: FONT_SIZES.MEDIUM * 1.25,
+              textAlign: "center",
+            }}
+          >
+            No added favorite movie list.
+          </Text>
+        </View>
+      ) : (
+        <FlatList
+          data={favorites}
+          renderItem={renderList}
+          ItemSeparatorComponent={SeparatorComponent}
+          keyExtractor={(item) => item.movieId.toString()}
+        />
+      )}
     </View>
   );
 };

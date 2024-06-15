@@ -64,7 +64,9 @@ export const MovieList = ({
           color={"White"}
           icon={"More"}
           strokeWidth={2}
-          onPress={() => navigation.navigate("Detail", { movieId })}
+          onPress={() =>
+            navigation.navigate("Detail", { movieId, releaseDate })
+          }
         />
       </View>
     </View>

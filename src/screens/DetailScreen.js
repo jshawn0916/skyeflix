@@ -15,7 +15,7 @@ import {
 } from "../utils/storage";
 
 const DetailScreen = ({ navigation, route, isFavorite }) => {
-  const { movieId } = route.params;
+  const { movieId, releaseDate } = route.params;
   const movieDetail = useMovieDetail(movieId);
   const castDetail = useGetCredit(movieId);
   const crewDetail = useGetCredit(movieId);
@@ -61,7 +61,7 @@ const DetailScreen = ({ navigation, route, isFavorite }) => {
     const movie = {
       movieId: movieId,
       title: movieDetail.title,
-      releaseDate: movieDetail.releaseDate,
+      releaseDate: releaseDate,
       posterImg: movieDetail.uri,
     };
     if (clicked) {
@@ -91,7 +91,7 @@ const DetailScreen = ({ navigation, route, isFavorite }) => {
             marginBottom: SPACES.SPACE_8,
           }}
         >
-          <View>
+          <View style={{ width: 300 }}>
             <Text
               style={{
                 fontFamily: FONTS.MEDIUM,
@@ -110,7 +110,7 @@ const DetailScreen = ({ navigation, route, isFavorite }) => {
                   marginRight: SPACES.SPACE_4,
                 }}
               >
-                {movieDetail.releaseDate}
+                {releaseDate}
               </Text>
               <View style={{ flexDirection: "row" }}>
                 <Text
@@ -143,6 +143,8 @@ const DetailScreen = ({ navigation, route, isFavorite }) => {
           posterImg={movieDetail.uri}
           overview={movieDetail.overview}
           movieId={movieId}
+          releaseDate={releaseDate}
+          title={movieDetail.title}
         />
         {/* cast area */}
         {castDetail.castDetail.length > 0 && (

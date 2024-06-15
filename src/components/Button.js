@@ -4,7 +4,15 @@ import { commonStyles } from "../commonStyles";
 import IconComponent from "./IconComponent";
 import { COLORS } from "../constants";
 
-export const Button = ({ title, size, color, icon, strokeWidth, onPress }) => {
+export const Button = ({
+  title,
+  size,
+  color,
+  icon,
+  strokeWidth,
+  onPress,
+  disabled,
+}) => {
   const buttonStyle = StyleSheet.flatten([
     commonStyles[`Button${size}`],
     commonStyles[`Button${color}`],
@@ -18,7 +26,7 @@ export const Button = ({ title, size, color, icon, strokeWidth, onPress }) => {
 
   let iconSize = size === "Lg" ? 24 : 18;
   return (
-    <TouchableOpacity style={buttonStyle} onPress={onPress}>
+    <TouchableOpacity style={buttonStyle} onPress={onPress} activeOpacity={1}>
       <IconComponent
         icon={icon}
         color={iconColor}

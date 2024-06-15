@@ -10,6 +10,7 @@ import StarIcon from "./Icons/StarIcon";
 import CalendarAddIcon from "./Icons/CalendarAddIcon";
 import PlayIcon from "./Icons/PlayIcon";
 import NotificationBingIcon from "./Icons/NotificationBingIcon";
+import TickSquareIcon from "./Icons/TickSquareIcon";
 
 export const IconComponent = ({ icon, color, iconSize, strokeWidth, fill }) => {
   let Icon;
@@ -43,6 +44,9 @@ export const IconComponent = ({ icon, color, iconSize, strokeWidth, fill }) => {
       break;
     case "NotificationBing":
       Icon = NotificationBingIcon;
+      break;
+    case "TickSquare":
+      Icon = TickSquareIcon;
       break;
     // 필요한 경우 다른 아이콘 컴포넌트를 추가합니다.
     default:

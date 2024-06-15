@@ -22,7 +22,15 @@ const useMovie = (countryCode) => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setMovieList(data.results);
+        // 현재 날짜를 가져옵니다.
+        const today = new Date();
+
+        // 영화 데이터에서 오늘 이전 날짜를 가진 영화들을 필터링합니다.
+        const filteredResults = data.results.filter((movie) => {
+          const releaseDate = new Date(movie.release_date);
+          return releaseDate >= today;
+        });
+        setMovieList(filteredResults);
       } catch (error) {
         console.error("Error fetching Movie List info:", error);
       }

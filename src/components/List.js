@@ -37,14 +37,14 @@ export const List = ({
             }}
           />
         )}
-        <View>
+        <View style={type === "favorite" ? { width: 180 } : { width: "auto" }}>
           <TouchableOpacity>
             <Text
               onPress={() => navigation.navigate("Detail", { movieId })}
               style={{
                 color: COLORS.WHITE,
                 fontFamily: FONTS.MEDIUM,
-                fontSize: FONT_SIZES.LARGE * 1.25,
+                fontSize: FONT_SIZES.MEDIUM * 1.25,
                 marginBottom: SPACES.SPACE_2,
               }}
             >
