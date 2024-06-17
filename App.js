@@ -29,7 +29,7 @@ import { requestCalendarPermission } from "./src/utils/calendar";
 
 const Stack = createNativeStackNavigator();
 
-requestNotificationPermission(); // 푸시 알림 권한 요청 함수
+requestNotificationPermission(); // Push notification permission request function
 const openNotificationSettings = () => {
   Linking.openSettings();
 };
@@ -40,17 +40,17 @@ export default function App() {
         const permissionGranted = await requestNotificationPermission();
         if (!permissionGranted) {
           Alert.alert(
-            "알림 권한 필요",
-            "알림 권한을 허용해야 알림을 받을 수 있습니다.",
+            "Notification permissions required",
+            "You must allow notification permissions to receive notifications.",
             [
-              { text: "취소", onPress: () => console.log("취소 Pressed") },
-              { text: "설정", onPress: openNotificationSettings },
+              { text: "Cancel", onPress: () => console.log("Cancel Pressed") },
+              { text: "Settings", onPress: openNotificationSettings },
             ],
             { cancelable: false }
           );
         }
       } catch (error) {
-        console.error("알림 권한 설정 에러:", error);
+        console.error("Notification permission setting error:", error);
       }
     };
 
@@ -58,14 +58,14 @@ export default function App() {
   }, []);
 
   Notifications.setNotificationHandler({
-    //push 핸들러 처리함수
+    //push handler processing function
     handleNotification: async () => ({
-      //알림이 도착했을 때 호출되는 비동기 함수
+      //Asynchronous function called when notifications arrive
       shouldShowAlert: true,
       shouldPlaySound: false,
       shouldSetBadge: false,
     }),
-  }); //푸시 알림에대한 설정
+  }); //Setting Up for Push Notifications
 
   const [fontsLoaded] = useFonts({
     [FONTS.LIGHT]: PlusJakartaSans_300Light,

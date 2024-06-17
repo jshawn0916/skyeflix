@@ -36,10 +36,10 @@ const SavedListScreen = ({ navigation }) => {
           text: "Delete",
           onPress: async () => {
             try {
-              await removeFavoriteMovie(movieId); // 저장된 목록에서 삭제
+              await removeFavoriteMovie(movieId); // Delete from saved list
               const updatedFavorites = favorites.filter(
                 (movie) => movie.movieId !== movieId
-              ); // 상태 업데이트
+              ); // status update
               setFavorites(updatedFavorites);
             } catch (error) {
               console.error("Error deleting notification:", error);
@@ -75,8 +75,8 @@ const SavedListScreen = ({ navigation }) => {
   const SeparatorComponent = () => (
     <View
       style={{
-        height: SPACES.SPACE_5, // 각 항목 사이의 공간 크기 조절
-        backgroundColor: "transparent", // 구분선의 색상
+        height: SPACES.SPACE_5, // Adjust the space size between each item
+        backgroundColor: "transparent", // The color of the dividing line
       }}
     />
   );

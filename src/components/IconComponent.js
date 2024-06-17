@@ -48,9 +48,8 @@ export const IconComponent = ({ icon, color, iconSize, strokeWidth, fill }) => {
     case "TickSquare":
       Icon = TickSquareIcon;
       break;
-    // 필요한 경우 다른 아이콘 컴포넌트를 추가합니다.
     default:
-      Icon = AddIcon; // 기본 아이콘 컴포넌트를 지정합니다.
+      Icon = AddIcon;
   }
   return (
     <View>

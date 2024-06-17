@@ -12,15 +12,15 @@ const HomeScreen = ({ navigation }) => {
   //   console.log(movies);
 
   const sortedMovies = movies.sort((a, b) => {
-    // release_date를 Date 객체로 변환
+    // Transform release_date to Date object
     const dateA = new Date(a.release_date);
     const dateB = new Date(b.release_date);
 
-    // 현재 날짜와의 차이 계산
+    // Calculate differences from the current date
     const diffA = Math.abs(dateA - new Date());
     const diffB = Math.abs(dateB - new Date());
 
-    // 차이가 작은 순으로 정렬
+    // Sort by the smallest difference
     return diffA - diffB;
   });
 
@@ -40,8 +40,8 @@ const HomeScreen = ({ navigation }) => {
   const SeparatorComponent = () => (
     <View
       style={{
-        height: SPACES.SPACE_5, // 각 항목 사이의 공간 크기 조절
-        backgroundColor: "transparent", // 구분선의 색상
+        height: SPACES.SPACE_5,
+        backgroundColor: "transparent",
       }}
     />
   );
@@ -94,9 +94,9 @@ const HomeScreen = ({ navigation }) => {
         </View>
       </View>
       <FlatList
-        data={sortedMovies} // 데이터 배열 설정
-        renderItem={renderItem} // renderItem 함수 설정
-        keyExtractor={(item) => item.id.toString()} // 각 아이템의 고유 키 설정
+        data={sortedMovies} // Data Array
+        renderItem={renderItem} // renderItem function
+        keyExtractor={(item) => item.id.toString()} // Set unique keys for each item
         ItemSeparatorComponent={SeparatorComponent}
         showsVerticalScrollIndicator={false}
       />

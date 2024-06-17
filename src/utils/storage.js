@@ -11,18 +11,18 @@ export const storeFavoriteMovie = async (movie) => {
     console.error(e);
   }
 };
-// 영화 정보를 제거하는 함수
+// Function to remove movie information
 export const removeFavoriteMovie = async (movieId) => {
   try {
     const favorites = await getFavoriteMovies();
     const newFavorites = favorites.filter((movie) => movie.movieId !== movieId);
     await AsyncStorage.setItem("favorites", JSON.stringify(newFavorites));
-    console.log("Updated favorites after removal:", newFavorites); // 추가된 로그
+    console.log("Updated favorites after removal:", newFavorites);
   } catch (e) {
     console.error(e);
   }
 };
-// 저장된 모든 영화 정보를 불러오는 함수
+// Function that fetches all stored movie information
 export const getFavoriteMovies = async () => {
   try {
     const favorites = await AsyncStorage.getItem("favorites");
@@ -33,7 +33,7 @@ export const getFavoriteMovies = async () => {
   }
 };
 
-// 모든 즐겨찾기를 삭제하는 함수
+// Function to delete all favorites
 export const clearAllFavorites = async () => {
   try {
     await AsyncStorage.removeItem("favorites");

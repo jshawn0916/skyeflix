@@ -48,15 +48,15 @@ export const Detail = ({
       }
     );
 
-    // 컴포넌트 언마운트 시 리스너 제거
+    // Removing a Listener on Component Unmount
     return () => {
       subscription.remove();
     };
   }, []);
 
   const sendPush = () => {
-    // ✅ 알림 전송 함수 호출
-    // ✅ alert 띄우기
+    // Call notification transfer function
+    // Showing alert
     scheduleNotification(movieId, releaseDate, title);
     Alert.alert("Reminder Added", "Reminder has been added successfully.", [
       { text: "OK" },

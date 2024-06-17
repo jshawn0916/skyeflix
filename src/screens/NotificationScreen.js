@@ -18,7 +18,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const NotificationScreen = ({ navigation }) => {
   const [notifications, setNotifications] = useState([]);
   useEffect(() => {
-    // 컴포넌트가 마운트될 때 저장된 알림 리스트를 가져와 설정합니다.
+    // Gets and sets the saved notification list when the component is mounted.
     loadNotifications();
   }, []);
 
@@ -43,9 +43,9 @@ const NotificationScreen = ({ navigation }) => {
           text: "Delete",
           onPress: async () => {
             try {
-              // 알림 삭제 요청 처리
+              // Processing the delete notification request
               await deleteNotification(notificationId);
-              // 알림 리스트 다시 불러오기
+              // Reload notification list
               loadNotifications();
             } catch (error) {
               console.error("Error deleting notification:", error);
@@ -66,7 +66,7 @@ const NotificationScreen = ({ navigation }) => {
           text: "Delete",
           onPress: async () => {
             try {
-              // 모든 알림 삭제 요청 처리
+              // Processing the delete all of the notifications request
               await AsyncStorage.removeItem("notifications");
               setNotifications([]);
             } catch (error) {
@@ -81,8 +81,8 @@ const NotificationScreen = ({ navigation }) => {
   const SeparatorComponent = () => (
     <View
       style={{
-        height: SPACES.SPACE_5, // 각 항목 사이의 공간 크기 조절
-        backgroundColor: "transparent", // 구분선의 색상
+        height: SPACES.SPACE_5,
+        backgroundColor: "transparent",
       }}
     />
   );

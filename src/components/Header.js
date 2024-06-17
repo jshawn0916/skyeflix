@@ -8,7 +8,7 @@ export const Header = () => {
   const navigation = useNavigation();
   const navigationState = useNavigationState((state) => state);
 
-  // 현재 스택에 이전 화면이 있는지 여부를 확인
+  // Check if the current stack has a previous screen
   const isPreviousScreen = navigation.canGoBack();
 
   return (
@@ -21,7 +21,7 @@ export const Header = () => {
         paddingHorizontal: SPACES.SPACE_6,
       }}
     >
-      {/* 이전 화면이 있을 때만 뒤로가기 버튼 표시 */}
+      {/* Show the Back button only when the previous screen is present*/}
       <View>
         {isPreviousScreen ? (
           <IconButton

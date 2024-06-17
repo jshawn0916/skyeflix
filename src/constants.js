@@ -12,7 +12,7 @@ export const COLORS = {
 
 //font sizes
 export const FONT_SIZES = {
-  //실제 적용시, 1.25배 해야함
+  //1.25x for actual application
   EXTRA_LARGE: 15,
   LARGE: 14,
   MEDIUM: 12,

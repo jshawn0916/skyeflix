@@ -39,12 +39,12 @@ const DetailScreen = ({ navigation, route, isFavorite }) => {
   const renderCrew = ({ item }) => (
     <CastList character={item.job} name={item.name} profileImg={item.profile} />
   );
-  // FlatList 컴포넌트 분리
+  // Separator FlatList component
   const SeparatorComponent = () => (
     <View
       style={{
-        width: SPACES.SPACE_5, // 각 항목 사이의 공간 크기 조절
-        backgroundColor: "transparent", // 구분선의 색상
+        width: SPACES.SPACE_5, //Adjust the space size between each item
+        backgroundColor: "transparent", // the color of the dividing line
       }}
     />
   );
@@ -163,8 +163,8 @@ const DetailScreen = ({ navigation, route, isFavorite }) => {
               data={castDetail.castDetail}
               renderItem={renderCast}
               keyExtractor={(_, index) => String(index)}
-              horizontal // 가로 스크롤 활성화
-              showsHorizontalScrollIndicator={false} // 가로 스크롤바 제거
+              horizontal // Enable horizontal scrolling
+              showsHorizontalScrollIndicator={false} //  Removal horizontal scrolling
               ItemSeparatorComponent={SeparatorComponent}
             />
           </View>
@@ -186,8 +186,8 @@ const DetailScreen = ({ navigation, route, isFavorite }) => {
               data={crewDetail.crewDetail}
               renderItem={renderCrew}
               keyExtractor={(_, index) => String(index)}
-              horizontal // 가로 스크롤 활성화
-              showsHorizontalScrollIndicator={false} // 가로 스크롤바 제거
+              horizontal // Enable horizontal scrolling
+              showsHorizontalScrollIndicator={false} // Removal horizontal scrolling
               ItemSeparatorComponent={SeparatorComponent}
             />
           </View>
