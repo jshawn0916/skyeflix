@@ -21,11 +21,6 @@
 - **Functionality:**
   - Tapping on any movie reveals various details including ensemble cast, director, plot summaries, genre classifications, and ratings.
 
-#### Add to Calendar
-- **Description:** Synchronize release dates to the device's calendar.
-- **Functionality:**
-  - Users can quickly add release dates to their local calendar with a simple tap.
-
 #### Release Date Push Notifications
 - **Description:** Stay updated with customizable push notifications.
 - **Functionality:**
